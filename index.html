@@ -1,23 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Mi Página</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página con contador y botón</title>
+    <style>
+        /* Estilo para la imagen de fondo */
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://via.placeholder.com/1920x1080'); /* Cambia el enlace a tu imagen */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Botón estilizado */
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Contenedor para centrar contenido */
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Contador */
+        .contador {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-  <h1 style="color: grey;">Hola, soy Valentin</h1>
-  <p>Bienvenido a mi pagina personal.</p>
-  <form>
-    <label>Nombre:</label>
-    <input type="text"><br><br>
-    <label>Correo:</label>
-    <input type="email"><br><br>
-    <input type="submit" value="Enviar">
-  </form>
-  <ul>
-    <li><a href="https://www.google.com">Google</a></li>
-    <li><a href="https://www.wikipedia.org">Wikipedia</a></li>
-  </ul>
-  <p2 style="color: pink;">eso es todo xd</p2>
-  <img src="https://lexipol.brightspotcdn.com/dims4/default/11c5644/2147483647/strip/false/crop/1200x1057+0+0/resize/1200x1057!/quality/90/?url=https%3A%2F%2Fk1-prod-lexipol.s3.us-east-2.amazonaws.com%2Fbrightspot%2F8d%2F3c%2Fd2786777f1496d859205af18d88f%2Ffire030220.jpeg" alt="Descripción de la imagen" width="300" height="200">
+    <div class="container">
+        <h1>Bienvenidos a mi página</h1>
+        <a class="button" href="https://example.com" target="_blank">Ir a otra página</a>
+        <div class="contador">
+            Visitas: <span id="contador">0</span>
+        </div>
+    </div>
+
+    <script>
+        // Incrementar el contador de visitas usando localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const contadorElemento = document.getElementById('contador');
+            let visitas = localStorage.getItem('visitas') || 0;
+            visitas = parseInt(visitas) + 1;
+            localStorage.setItem('visitas', visitas);
+            contadorElemento.textContent = visitas;
+        });
+    </script>
 </body>
 </html>

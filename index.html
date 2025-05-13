@@ -59,13 +59,34 @@
     </div>
 
     <script>
-        // Incrementar el contador de visitas usando localStorage
+        // Incrementar el contador de visitas usando una API simulada
         document.addEventListener('DOMContentLoaded', () => {
             const contadorElemento = document.getElementById('contador');
-            let visitas = localStorage.getItem('visitas') || 0;
-            visitas = parseInt(visitas) + 1;
-            localStorage.setItem('visitas', visitas);
-            contadorElemento.textContent = visitas;
+
+            // URL de la API (aquí tendrías que usar tu propio backend)
+            const apiURL = 'https://example.com/visitas'; // Cambiar a tu endpoint real
+
+            // Obtener las visitas desde el servidor
+            fetch(apiURL)
+                .then(response => response.json())
+                .then(data => {
+                    contadorElemento.textContent = data.visitas; // Mostrar las visitas actuales
+                })
+                .catch(error => console.error('Error al obtener las visitas:', error));
+
+            // Incrementar el contador en el servidor
+            fetch(apiURL, {
+                method: 'POST', // Usar POST para incrementar
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ incrementar: true })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Visitas incrementadas:', data.visitas);
+                })
+                .catch(error => console.error('Error al incrementar las visitas:', error));
         });
     </script>
 </body>

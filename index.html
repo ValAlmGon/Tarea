@@ -3,91 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página con contador y botón</title>
+    <title>Contador de Visitas</title>
     <style>
-        /* Estilo para la imagen de fondo */
         body {
             margin: 0;
             padding: 0;
-            background-image: url('https://external-preview.redd.it/6MLqC72Ej21UZsHdmLWaUiMRqSJFOP4DsFMkfovpIMc.jpg?auto=webp&s=67e0a61797557399e89e7b13de0a86759a7e892b'); /* Cambia el enlace a tu imagen */
+            height: 100vh;
+            background: url('https://external-preview.redd.it/6MLqC72Ej21UZsHdmLWaUiMRqSJFOP4DsFMkfovpIMc.jpg?auto=webp&s=67e0a61797557399e89e7b13de0a86759a7e892b') no-repeat center center fixed;
             background-size: cover;
-            background-position: down;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
             font-family: Arial, sans-serif;
-            color: #fff;
-            text-align: center;
         }
 
-        /* Botón estilizado */
-        .button {
-            margin-top: 20px;
+        button {
             padding: 10px 20px;
-            font-size: 18px;
-            color: white;
-            background-color: #007bff;
+            font-size: 16px;
             border: none;
             border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
             cursor: pointer;
-            text-decoration: none;
         }
 
-        .button:hover {
+        button:hover {
             background-color: #0056b3;
         }
 
-        /* Contenedor para centrar contenido */
-        .container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        /* Contador */
-        .contador {
-            font-size: 24px;
+        #contador {
             margin-top: 20px;
+            font-size: 24px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Bienvenidos a mi página</h1>
-        <a class="button" href="https://valalmgon.github.io/tarea-2/" target="_blank">Ir a otra página</a>
-        <div class="contador">
-            Visitas: <span id="contador">0</span>
-        </div>
-    </div>
+    <h1>Bienvenidos a mi página</h1>
+    <button onclick="window.location.href='https://valalmgon.github.io/tarea-2/';">Ir a otra página</button>
+    <div id="contador">Cargando visitas...</div>
 
     <script>
-        // Incrementar el contador de visitas usando una API simulada
-        document.addEventListener('DOMContentLoaded', () => {
-            const contadorElemento = document.getElementById('contador');
+        // Función para actualizar el contador de visitas
+        async function actualizarContador() {
+            try {
+                const response = await fetch('https://api.npoint.io/tu-endpoint-aqui', { method: 'POST' });
+                const data = await response.json();
+                document.getElementById('contador').innerText = `Visitas: ${data.visitas}`;
+            } catch (error) {
+                console.error('Error al actualizar el contador:', error);
+                document.getElementById('contador').innerText = 'Error al cargar las visitas.';
+            }
+        }
 
-            // URL de la API (aquí tendrías que usar tu propio backend)
-            const apiURL = 'https://example.com/visitas'; // Cambiar a tu endpoint real
-
-            // Obtener las visitas desde el servidor
-            fetch(apiURL)
-                .then(response => response.json())
-                .then(data => {
-                    contadorElemento.textContent = data.visitas; // Mostrar las visitas actuales
-                })
-                .catch(error => console.error('Error al obtener las visitas:', error));
-
-            // Incrementar el contador en el servidor
-            fetch(apiURL, {
-                method: 'POST', // Usar POST para incrementar
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ incrementar: true })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Visitas incrementadas:', data.visitas);
-                })
-                .catch(error => console.error('Error al incrementar las visitas:', error));
-        });
+        // Llamada inicial para mostrar las visitas
+        actualizarContador();
     </script>
 </body>
 </html>

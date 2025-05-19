@@ -69,5 +69,25 @@
             contadorElemento.textContent = visitas;
         });
     </script>
+     <h1>Bienvenido</h1>
+  <div id="contador"></div>
+  <script>
+    // Obtener el contador actual del localStorage, si existe
+    let visitasUnicas = localStorage.getItem('visita_unica_realizada');
+    let contador = localStorage.getItem('contador_visitas') || 0;
+
+    // Si no ha visitado antes desde este navegador/dispositivo
+    if (!visitasUnicas) {
+      contador++;
+      localStorage.setItem('contador_visitas', contador);
+      localStorage.setItem('visita_unica_realizada', 'true');
+    }
+
+    // Mostrar el contador
+    document.getElementById('contador').innerText = 
+      'Visitas únicas desde este navegador: ' + contador;
+  </script>
+</body>
+</html>
 </body>
 </html>

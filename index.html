@@ -1,94 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página con contador y botón</title>
-    <style>
-        /* Estilo para la imagen de fondo */
-        body {
-            margin: 0;
-            padding: 0;
-            background-image: url('https://via.placeholder.com/1920x1080'); /* Cambia el enlace a tu imagen */
-            background-image: url('https://external-preview.redd.it/6MLqC72Ej21UZsHdmLWaUiMRqSJFOP4DsFMkfovpIMc.jpg?auto=webp&s=67e0a61797557399e89e7b13de0a86759a7e892b'); /* Cambia el enlace a tu imagen */
-            background-size: cover;
-            background-position: down;
-            font-family: Arial, sans-serif;
-            color: #fff;
-            text-align: center;
-        }
-
-        /* Botón estilizado */
-        .button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 18px;
-            color: white;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Contenedor para centrar contenido */
-        .container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        /* Contador */
-        .contador {
-            font-size: 24px;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Sitio Estético Completo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Bienvenidos a mi página</h1>
-        <a class="button" href="https://example.com" target="_blank">Ir a otra página</a>
-        <div class="contador">
-            Visitas: <span id="contador">0</span>
-        </div>
-    </div>
-
-    <script>
-        // Incrementar el contador de visitas usando localStorage
-        document.addEventListener('DOMContentLoaded', () => {
-            const contadorElemento = document.getElementById('contador');
-            let visitas = localStorage.getItem('visitas') || 0;
-            visitas = parseInt(visitas) + 1;
-            localStorage.setItem('visitas', visitas);
-            contadorElemento.textContent = visitas;
-        });
-    </script>
-     <h1>Bienvenido</h1>
-  <div id="contador"></div>
-  <script>
-    // Obtener el contador actual del localStorage, si existe
-    let visitasUnicas = localStorage.getItem('visita_unica_realizada');
-    let contador = localStorage.getItem('contador_visitas') || 0;
-
-    // Si no ha visitado antes desde este navegador/dispositivo
-    if (!visitasUnicas) {
-      contador++;
-      localStorage.setItem('contador_visitas', contador);
-      localStorage.setItem('visita_unica_realizada', 'true');
-    }
-
-    // Mostrar el contador
-    document.getElementById('contador').innerText = 
-      'Visitas únicas desde este navegador: ' + contador;
-  </script>
-    <audio autoplay loop>
-  <source src="https://docs.google.com/uc?export=download&id=1wAzJMeab0nykZg5q9mjS80Kl1gvgDVSi" type="audio/mp3">
-</audio>
+  <main class="container">
+    <section class="view-counter">
+      <h1 class="main-title">🌸 Página Estética 🌸</h1>
+      <div class="counter-box">
+        <span class="counter-label">👁️ Vistas:</span>
+        <span id="viewCount" class="counter-number">0</span>
+      </div>
+    </section>
+    <section class="actions">
+      <button class="btn" onclick="location.href='https://www.google.com'">
+        Ir a otra página 🚀
+      </button>
+    </section>
+    <section class="music-player">
+      <h2 class="music-title">🎶 Música Ambiente</h2>
+      <audio id="audioPlayer" controls autoplay loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mp3">
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+      <div class="music-bar">
+        <div class="bar" id="bar1"></div>
+        <div class="bar" id="bar2"></div>
+        <div class="bar" id="bar3"></div>
+        <div class="bar" id="bar4"></div>
+        <div class="bar" id="bar5"></div>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>

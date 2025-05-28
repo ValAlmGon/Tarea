@@ -10,9 +10,14 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- FONDO GIF DECORATIVO -->
+  <div class="background-gif"></div>
   <main class="container">
     <section class="view-counter">
-      <h1 class="main-title">🌸 Página Estética 🌸</h1>
+      <h1 class="main-title">
+        🌸 Página Estética 🌸<br>
+        <img src="https://media.giphy.com/media/3oKIPwoeGErMmaI43C/giphy.gif" alt="flores" class="gif-decor" />
+      </h1>
       <div class="counter-box">
         <span class="counter-label">👁️ Vistas:</span>
         <span id="viewCount" class="counter-number">0</span>
@@ -22,7 +27,9 @@
       <button class="btn" onclick="location.href='https://www.google.com'">
         Ir a otra página 🚀
       </button>
+      <img src="https://media.giphy.com/media/26gsjCZpPolPr3sBy/giphy.gif" alt="corazon" class="gif-btn" />
     </section>
+    <!-- NO MUEVO LA PARTE DE MÚSICA -->
     <section class="music-player">
       <h2 class="music-title">🎶 Música Ambiente</h2>
       <audio id="audioPlayer" controls autoplay loop>
@@ -38,6 +45,15 @@
       </div>
     </section>
   </main>
-  <script src="script.js"></script>
+  <script src="script.js"
+    // Contador de vistas con LocalStorage
+window.addEventListener('DOMContentLoaded', () => {
+  const viewCountElem = document.getElementById('viewCount');
+  let count = localStorage.getItem('viewCount') || 0;
+  count = parseInt(count) + 1;
+  localStorage.setItem('viewCount', count);
+  viewCountElem.textContent = count;
+});></script>
+
 </body>
 </html>

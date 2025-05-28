@@ -1,0 +1,180 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.background-gif {
+  background-image: url('https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.35;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: -1;
+  animation: bgFade 10s infinite alternate;
+}
+
+@keyframes bgFade {
+  0% { opacity: .35; }
+  100% { opacity: .55; }
+}
+
+.container {
+  max-width: 500px;
+  margin: 60px auto;
+  background: rgba(255,255,255,0.75);
+  border-radius: 34px;
+  padding: 32px 24px 24px 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.2);
+  text-align: center;
+  position: relative;
+}
+
+.main-title {
+  font-size: 2.3rem;
+  font-weight: 900;
+  color: #d16ba5;
+  text-shadow: 2px 2px 15px #fff3;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+  animation: titlePop 1s ease;
+}
+
+@keyframes titlePop {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1.07); opacity: 1; }
+}
+
+.counter-box {
+  background: linear-gradient(90deg, #fff6, #fbc2eb 60%);
+  border-radius: 1.2em;
+  padding: 15px 0;
+  margin-bottom: 10px;
+  margin-top: 6px;
+  box-shadow: 0 1px 7px #d16ba5aa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+}
+
+.counter-label {
+  margin-right: 8px;
+  font-weight: 600;
+  color: #6a82fb;
+}
+
+.counter-number {
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: #ff61a6;
+  text-shadow: 0 2px 4px #fff7;
+  transition: color 0.3s;
+  animation: bounce 1s;
+}
+
+@keyframes bounce {
+  0% { transform: scale(0.8);}
+  70% { transform: scale(1.2);}
+  100% { transform: scale(1);}
+}
+
+.btn {
+  background: linear-gradient(90deg, #6a82fb, #fc5c7d);
+  border: none;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 30px;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 18px 0;
+  cursor: pointer;
+  transition: background 0.4s, transform 0.2s;
+  box-shadow: 0 3px 8px #d16ba5bb;
+  animation: btnGlow 1.5s infinite alternate;
+}
+
+@keyframes btnGlow {
+  0% { box-shadow: 0 3px 8px #d16ba566;}
+  100% { box-shadow: 0 6px 16px #d16ba5cc;}
+}
+
+.btn:hover {
+  transform: scale(1.07);
+  background: linear-gradient(90deg, #fc5c7d, #6a82fb);
+}
+
+.music-player {
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.50);
+  border-radius: 1em;
+  padding: 20px 0 10px 0;
+  box-shadow: 0 2px 15px #d16ba544;
+}
+
+.music-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #6a82fb;
+  margin-bottom: 8px;
+}
+
+.music-bar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 12px;
+  height: 30px;
+}
+
+.bar {
+  width: 8px;
+  margin: 0 4px;
+  background: linear-gradient(#fc5c7d, #6a82fb);
+  border-radius: 6px;
+  height: 20px;
+  animation: barAnim 1s infinite alternate;
+}
+
+#bar2 { animation-delay: 0.2s;}
+#bar3 { animation-delay: 0.4s;}
+#bar4 { animation-delay: 0.6s;}
+#bar5 { animation-delay: 0.8s;}
+
+@keyframes barAnim {
+  0% { height: 10px;}
+  100% { height: 32px;}
+}
+
+.gif-decor {
+  width: 60px;
+  height: 60px;
+  vertical-align: middle;
+  border-radius: 50%;
+  margin-top: 10px;
+  box-shadow: 0 0 8px #fff7;
+  animation: rotate 8s linear infinite;
+}
+
+.gif-btn {
+  width: 45px;
+  margin-left: 18px;
+  vertical-align: middle;
+  border-radius: 12px;
+  box-shadow: 0 1px 7px #fc5c7d55;
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+@keyframes pulse {
+  0% { transform: scale(1);}
+  100% { transform: scale(1.13);}
+}
